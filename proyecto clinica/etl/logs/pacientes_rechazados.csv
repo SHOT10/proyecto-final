@@ -1,0 +1,4 @@
+nombre_completo,fecha_nacimiento,genero,telefono,correo,direccion,motivo_rechazo
+Roberto Salazar,14/03/1988,M,6011-2233,roberto.salazar@mail.com,Panamá Norte,Email duplicado dentro del mismo archivo
+Fatima Aparicio,31/02/1995,f,6055-6677,correo_invalido_sin_arroba,Panamá,Email con formato inválido
+,1990-01-01,M,6066-7788,sin.nombre@mail.com,Arraiján,Nombre vacío

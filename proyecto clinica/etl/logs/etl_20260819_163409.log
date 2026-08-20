@@ -1,0 +1,12 @@
+2026-08-19 16:34:09,041 [INFO] ===== INICIO DEL PROCESO ETL =====
+2026-08-19 16:34:09,041 [INFO] EXTRACT: leyendo archivo fuente 'C:\Users\ariel\Downloads\proyecto final\proyecto clinica\etl\data\pacientes_externos.csv'
+2026-08-19 16:34:09,089 [INFO] EXTRACT: 10 filas leídas del origen
+2026-08-19 16:34:09,089 [INFO] TRANSFORM: limpiando y validando registros
+2026-08-19 16:34:09,122 [WARNING] Fila 5 rechazada: Email duplicado dentro del mismo archivo -> {'nombre_completo': 'Roberto Salazar', 'fecha_nacimiento': '14/03/1988', 'genero': 'M', 'telefono': '6011-2233', 'correo': 'roberto.salazar@mail.com', 'direccion': 'Panamá Norte'}
+2026-08-19 16:34:09,123 [WARNING] Fila 7 rechazada: Email con formato inválido -> {'nombre_completo': 'Fatima Aparicio', 'fecha_nacimiento': '31/02/1995', 'genero': 'f', 'telefono': '6055-6677', 'correo': 'correo_invalido_sin_arroba', 'direccion': 'Panamá'}
+2026-08-19 16:34:09,123 [WARNING] Fila 8 rechazada: Nombre vacío -> {'nombre_completo': '', 'fecha_nacimiento': '1990-01-01', 'genero': 'M', 'telefono': '6066-7788', 'correo': 'sin.nombre@mail.com', 'direccion': 'Arraiján'}
+2026-08-19 16:34:09,123 [INFO] TRANSFORM: 7 registros válidos, 3 rechazados
+2026-08-19 16:34:09,125 [INFO] TRANSFORM: detalle de rechazados guardado en 'C:\Users\ariel\Downloads\proyecto final\proyecto clinica\etl\logs\pacientes_rechazados.csv'
+2026-08-19 16:34:09,125 [INFO] LOAD: conectando a MariaDB en localhost:3306
+2026-08-19 16:34:09,455 [INFO] LOAD: 7 registros insertados/actualizados en 'pacientes'
+2026-08-19 16:34:09,525 [INFO] ===== FIN DEL PROCESO ETL =====

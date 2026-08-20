@@ -1,0 +1,171 @@
+{
+  "info": {
+    "name": "Clínica Citas API",
+    "_postman_id": "b1f0a1e0-0000-4a11-9e11-clinica0001",
+    "description": "Colección de pruebas funcionales para el Proyecto Final de Base de Datos II.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    { "key": "base_url", "value": "http://localhost:3000/api" },
+    { "key": "paciente_id", "value": "1" },
+    { "key": "medico_id", "value": "1" },
+    { "key": "especialidad_id", "value": "1" },
+    { "key": "consultorio_id", "value": "1" },
+    { "key": "cita_id", "value": "1" },
+    { "key": "diagnostico_id", "value": "1" }
+  ],
+  "item": [
+    {
+      "name": "Health Check",
+      "request": { "method": "GET", "url": "{{base_url}}/health" }
+    },
+    {
+      "name": "Especialidades",
+      "item": [
+        { "name": "Listar todas", "request": { "method": "GET", "url": "{{base_url}}/especialidades" } },
+        { "name": "Obtener una", "request": { "method": "GET", "url": "{{base_url}}/especialidades/{{especialidad_id}}" } },
+        {
+          "name": "Crear",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": "{{base_url}}/especialidades",
+            "body": { "mode": "raw", "raw": "{\n  \"nombre\": \"Neurología\",\n  \"descripcion\": \"Sistema nervioso\"\n}" }
+          }
+        },
+        {
+          "name": "Actualizar",
+          "request": {
+            "method": "PUT",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": "{{base_url}}/especialidades/{{especialidad_id}}",
+            "body": { "mode": "raw", "raw": "{\n  \"descripcion\": \"Descripción actualizada\"\n}" }
+          }
+        },
+        { "name": "Eliminar", "request": { "method": "DELETE", "url": "{{base_url}}/especialidades/6" } }
+      ]
+    },
+    {
+      "name": "Consultorios",
+      "item": [
+        { "name": "Listar todos", "request": { "method": "GET", "url": "{{base_url}}/consultorios" } },
+        { "name": "Obtener uno", "request": { "method": "GET", "url": "{{base_url}}/consultorios/{{consultorio_id}}" } },
+        {
+          "name": "Crear",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": "{{base_url}}/consultorios",
+            "body": { "mode": "raw", "raw": "{\n  \"numero\": \"301\",\n  \"piso\": 3,\n  \"tipo\": \"Especialidad\"\n}" }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Médicos",
+      "item": [
+        { "name": "Listar todos", "request": { "method": "GET", "url": "{{base_url}}/medicos" } },
+        { "name": "Estadísticas por médico (vista)", "request": { "method": "GET", "url": "{{base_url}}/medicos/estadisticas" } },
+        { "name": "Obtener uno", "request": { "method": "GET", "url": "{{base_url}}/medicos/{{medico_id}}" } },
+        {
+          "name": "Crear",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": "{{base_url}}/medicos",
+            "body": { "mode": "raw", "raw": "{\n  \"nombre\": \"Elena\",\n  \"apellido\": \"Ríos\",\n  \"id_especialidad\": 1,\n  \"telefono\": \"6999-0000\",\n  \"email\": \"elena.rios@clinica.com\"\n}" }
+          }
+        },
+        {
+          "name": "Actualizar",
+          "request": {
+            "method": "PUT",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": "{{base_url}}/medicos/{{medico_id}}",
+            "body": { "mode": "raw", "raw": "{\n  \"telefono\": \"6000-0001\"\n}" }
+          }
+        },
+        { "name": "Eliminar", "request": { "method": "DELETE", "url": "{{base_url}}/medicos/99" } }
+      ]
+    },
+    {
+      "name": "Pacientes",
+      "item": [
+        { "name": "Listar todos", "request": { "method": "GET", "url": "{{base_url}}/pacientes" } },
+        { "name": "Obtener uno", "request": { "method": "GET", "url": "{{base_url}}/pacientes/{{paciente_id}}" } },
+        { "name": "Historial (SP sp_historial_paciente)", "request": { "method": "GET", "url": "{{base_url}}/pacientes/{{paciente_id}}/historial" } },
+        {
+          "name": "Crear",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": "{{base_url}}/pacientes",
+            "body": { "mode": "raw", "raw": "{\n  \"nombre\": \"Valentina\",\n  \"apellido\": \"Ortega\",\n  \"fecha_nacimiento\": \"1999-04-12\",\n  \"genero\": \"F\",\n  \"telefono\": \"6777-8888\",\n  \"email\": \"valentina.ortega@mail.com\",\n  \"direccion\": \"Panamá\"\n}" }
+          }
+        },
+        {
+          "name": "Actualizar",
+          "request": {
+            "method": "PUT",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": "{{base_url}}/pacientes/{{paciente_id}}",
+            "body": { "mode": "raw", "raw": "{\n  \"telefono\": \"6000-9999\"\n}" }
+          }
+        },
+        { "name": "Eliminar", "request": { "method": "DELETE", "url": "{{base_url}}/pacientes/99" } }
+      ]
+    },
+    {
+      "name": "Citas",
+      "item": [
+        { "name": "Listar todas", "request": { "method": "GET", "url": "{{base_url}}/citas" } },
+        { "name": "Detalle completo (vista, con filtros)", "request": { "method": "GET", "url": "{{base_url}}/citas/completas?estado=Confirmada" } },
+        { "name": "Obtener una", "request": { "method": "GET", "url": "{{base_url}}/citas/{{cita_id}}" } },
+        {
+          "name": "Agendar (SP sp_agendar_cita - éxito esperado)",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": "{{base_url}}/citas/agendar",
+            "body": { "mode": "raw", "raw": "{\n  \"id_paciente\": 2,\n  \"id_medico\": 5,\n  \"id_consultorio\": 4,\n  \"fecha\": \"2026-09-01\",\n  \"hora\": \"13:30:00\",\n  \"motivo\": \"Consulta de control\"\n}" }
+          }
+        },
+        {
+          "name": "Agendar (SP - choque de horario, debe dar 409)",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": "{{base_url}}/citas/agendar",
+            "body": { "mode": "raw", "raw": "{\n  \"id_paciente\": 2,\n  \"id_medico\": 1,\n  \"id_consultorio\": 1,\n  \"fecha\": \"2026-08-17\",\n  \"hora\": \"08:30:00\",\n  \"motivo\": \"Choque de prueba\"\n}" }
+          }
+        },
+        {
+          "name": "Actualizar estado",
+          "request": {
+            "method": "PUT",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": "{{base_url}}/citas/{{cita_id}}",
+            "body": { "mode": "raw", "raw": "{\n  \"estado\": \"Confirmada\"\n}" }
+          }
+        },
+        { "name": "Eliminar", "request": { "method": "DELETE", "url": "{{base_url}}/citas/99" } }
+      ]
+    },
+    {
+      "name": "Diagnósticos",
+      "item": [
+        { "name": "Listar todos", "request": { "method": "GET", "url": "{{base_url}}/diagnosticos" } },
+        { "name": "Obtener uno", "request": { "method": "GET", "url": "{{base_url}}/diagnosticos/{{diagnostico_id}}" } },
+        {
+          "name": "Crear",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": "{{base_url}}/diagnosticos",
+            "body": { "mode": "raw", "raw": "{\n  \"id_cita\": 3,\n  \"descripcion\": \"Control pediátrico normal\",\n  \"tratamiento\": \"Ninguno\"\n}" }
+          }
+        }
+      ]
+    }
+  ]
+}

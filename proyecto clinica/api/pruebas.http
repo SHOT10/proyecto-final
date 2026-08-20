@@ -1,0 +1,114 @@
+### Requiere la extensión "REST Client" de VS Code (humao.rest-client)
+### Con la API corriendo (npm run dev), haz clic en "Send Request" sobre cada bloque.
+
+@baseUrl = http://localhost:3000/api
+
+### Health check
+GET {{baseUrl}}/health
+
+### ------------------- ESPECIALIDADES -------------------
+
+### Listar especialidades
+GET {{baseUrl}}/especialidades
+
+### Crear especialidad
+POST {{baseUrl}}/especialidades
+Content-Type: application/json
+
+{
+  "nombre": "Neurología",
+  "descripcion": "Sistema nervioso"
+}
+
+### ------------------- MÉDICOS -------------------
+
+### Listar médicos
+GET {{baseUrl}}/medicos
+
+### Estadísticas por médico (consulta cruda sobre vista_estadisticas_medico)
+GET {{baseUrl}}/medicos/estadisticas
+
+### Obtener un médico
+GET {{baseUrl}}/medicos/1
+
+### ------------------- PACIENTES -------------------
+
+### Listar pacientes
+GET {{baseUrl}}/pacientes
+
+### Historial de un paciente (procedimiento almacenado sp_historial_paciente)
+GET {{baseUrl}}/pacientes/1/historial
+
+### Crear paciente
+POST {{baseUrl}}/pacientes
+Content-Type: application/json
+
+{
+  "nombre": "Valentina",
+  "apellido": "Ortega",
+  "fecha_nacimiento": "1999-04-12",
+  "genero": "F",
+  "telefono": "6777-8888",
+  "email": "valentina.ortega@mail.com",
+  "direccion": "Panamá"
+}
+
+### ------------------- CITAS -------------------
+
+### Listar citas
+GET {{baseUrl}}/citas
+
+### Detalle completo de citas (consulta cruda sobre vista_citas_completas), con filtros
+GET {{baseUrl}}/citas/completas?estado=Confirmada
+
+### Agendar cita válida (procedimiento almacenado sp_agendar_cita)
+POST {{baseUrl}}/citas/agendar
+Content-Type: application/json
+
+{
+  "id_paciente": 2,
+  "id_medico": 5,
+  "id_consultorio": 4,
+  "fecha": "2026-09-01",
+  "hora": "13:30:00",
+  "motivo": "Consulta de control"
+}
+
+### Agendar cita con choque de horario (debe responder 409)
+POST {{baseUrl}}/citas/agendar
+Content-Type: application/json
+
+{
+  "id_paciente": 2,
+  "id_medico": 1,
+  "id_consultorio": 1,
+  "fecha": "2026-08-17",
+  "hora": "08:30:00",
+  "motivo": "Choque de prueba"
+}
+
+### Actualizar estado de una cita
+PUT {{baseUrl}}/citas/1
+Content-Type: application/json
+
+{
+  "estado": "Confirmada"
+}
+
+### Eliminar una cita
+DELETE {{baseUrl}}/citas/99
+
+### ------------------- DIAGNÓSTICOS -------------------
+
+### Listar diagnósticos
+GET {{baseUrl}}/diagnosticos
+
+### Crear diagnóstico
+POST {{baseUrl}}/diagnosticos
+Content-Type: application/json
+
+{
+  "id_cita": 3,
+  "descripcion": "Control pediátrico normal",
+  "tratamiento": "Ninguno"
+}
