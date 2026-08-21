@@ -112,6 +112,3 @@ Con la API corriendo, ejecutar el plan de pruebas de `jmeter/` (20 usuarios simu
 
 Tanto `api/` como `etl/` requieren un archivo `.env` (no versionado) basado en el `.env.example` correspondiente, con las credenciales de conexión a MariaDB.
 
-## 📄 Documentación completa
-
-La documentación técnica detallada (diagrama entidad-relación, justificación de 3FN, reglas de negocio, capturas de cada componente, lecciones aprendidas y glosario de términos) está disponible en el documento del proyecto.
